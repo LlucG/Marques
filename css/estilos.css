@@ -23,3 +23,22 @@ nav {
 	border: solid 0.2em white;
 	border-radius: 1em;
 }
+
+#caixa {
+	width: 50%;
+	margin: auto;
+	margin-top: 3em;
+	background-color: #FDDB5B;
+	padding: 1em;
+	border: solid 0.2em white;
+	border-radius: 1em;
+}
+
+.input {
+	width: 90%;
+
+}
+
+form {
+	width: 100%;
+}
