@@ -1,3 +1,25 @@
 @charset "utf-8";
 /* CSS Document */
 
+body {
+	background-color: #3E3E3E;
+}
+
+#navtitol {
+	text-decoration: none;
+	font-size: 2em;
+}
+
+#navlink {
+	float: right;
+	margin-right: 2.5em;
+	margin-top: 0.3em;
+	font-size: 1.2em;
+}
+
+nav {
+	background-color: #FDDB5B;
+	padding: 1em;
+	border: solid 0.2em white;
+	border-radius: 1em;
+}
