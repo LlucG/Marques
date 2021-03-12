@@ -8,13 +8,9 @@
 </head>
 
 <body>
-	<nav>
-		<a href="" id="navtitol">UY! TRANSFER</a>
-		<a href="" id="navlink">Historial</a>
-		<a href="" id="navlink">Enviar arxius</a>
-	</nav>
+	<?php include 'php/header.php'; ?>
 	<div id="caixa">
-		<form>
+		<form action="upload.php" method="post" enctype="multipart/form-data">
 			<ul>
 				<input type="text" name="nom" placeholder="El teu nom" class="input">
 			</ul>
