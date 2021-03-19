@@ -15,8 +15,7 @@
 				<input type="text" name="nom" placeholder="El teu nom" class="input">
 			</ul>
 			<ul>
-				<input type="text" name="arxiu" placeholder="Selecciona el teu arxiu" class="input">
-				<button style="margin-top: 0.5em;">Examinar</button>
+				<input type="file" name="arxiu" placeholder="Selecciona el teu arxiu" class="input">
 			</ul>
 			<ul>
 				<input type="checkbox" name="linksino" id="linksino">

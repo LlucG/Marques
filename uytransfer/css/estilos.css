@@ -34,6 +34,16 @@ nav {
 	border-radius: 1em;
 }
 
+#caixaUpload {
+	width: 80%;
+	margin: auto;
+	margin-top: 3em;
+	background-color: #FDDB5B;
+	padding: 1em;
+	border: solid 0.2em white;
+	border-radius: 1em;
+}
+
 .input {
 	width: 90%;
 
@@ -41,4 +51,14 @@ nav {
 
 form {
 	width: 100%;
+}
+
+#titolUpload {
+	font-size: 3em;
+	margin-left: 1em;
+}
+
+#textUpload {
+	font-size: 1.5em;
+	margin-left: 3em;
 }
