@@ -10,6 +10,7 @@
 <body>
 	<?php include 'php/header.php'; ?>
 	<?php
+		session_start();
 		#print_r($_POST);
 		#print_r($_FILES);
 		$extensiobool = false;
@@ -27,17 +28,20 @@
 			move_uploaded_file($_FILES['arxiu']['tmp_name'], "files/". $nom . "." .$extensio);
 			$link ='http://localhost/Marques/uytransfer/files/'.$nom.'.'.$extensio;
 		}
+		$_SESSION["link"] = $link;
 
 		//Enviar mail php
 		/*Abans d'enviar el correu electrònic es verificarà que l'email introduït tingui format d'email, és a dir, que contingui el caràcter @. Si no és així, es redireccionarà a l'usuari a index.php informant de l'error. Aquest error serà enviat com a paràmetre d'una petició get (per exemple, index.php?error_mail=1). Al mostrar novament el formulari de pujada (index.php) l'usuari ha de visualitzar algun missatge d'error que informi que l'email indicat no és vàlid.*/
 		$email = $_POST["email"];
 		$emailcorrectebool = false;
-		if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$emailcorrectebool = true;
-		} else {
-			header('Location: index.php');
+		if (!empty($_POST["email"])) {
+			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$emailcorrectebool = true;
+			} else {
+				header('Location: index.php');
+			}
 		}
-
+			
 		if ($emailcorrectebool && $extensiobool && $midabool && $_POST["linksino"] = 'on') {
 			$tema = 'Link Uy Transfer';
 			if (empty($_POST["missatge"])) {
@@ -70,6 +74,7 @@
 							echo '<p id="titolUpload" style="margin-top: 2.5em; margin-bottom: 2.5em; margin-left: 3em;">No \'ha enviat cap arxiu</p></td>';
 						}
 					?>
+				</td>
 			</tr>
 			<tr>
 				<td>
