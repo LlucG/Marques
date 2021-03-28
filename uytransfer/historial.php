@@ -27,7 +27,7 @@
 			<td>
 				<p id="titolUpload">Historial links</p>
 				<?php
-					echo '<p id="textUpload" style="margin-top: 0em; margin-left: 4em;">'.$link.'</p>';
+					echo '<a href="'.$link.'"><p id="textUpload" style="margin-top: 0em; margin-left: 4em;">'.$link.'</p></a>';
 				?>
 			</td>
 		</tr>

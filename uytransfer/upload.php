@@ -27,10 +27,9 @@
 			$nom = date("Y") . date("m") . date("d") . rand(11111, 99999);
 			move_uploaded_file($_FILES['arxiu']['tmp_name'], "files/". $nom . "." .$extensio);
 			$link ='http://localhost/Marques/uytransfer/files/'.$nom.'.'.$extensio;
+			$_SESSION["link"] = $link;
 		}
-		$_SESSION["link"] = $link;
-
-		//Enviar mail php
+		
 		/*Abans d'enviar el correu electrònic es verificarà que l'email introduït tingui format d'email, és a dir, que contingui el caràcter @. Si no és així, es redireccionarà a l'usuari a index.php informant de l'error. Aquest error serà enviat com a paràmetre d'una petició get (per exemple, index.php?error_mail=1). Al mostrar novament el formulari de pujada (index.php) l'usuari ha de visualitzar algun missatge d'error que informi que l'email indicat no és vàlid.*/
 		$email = $_POST["email"];
 		$emailcorrectebool = false;
