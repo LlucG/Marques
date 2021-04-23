@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require "header.php";
 	include 'config.php';
 	if ($conn->connect_error) {

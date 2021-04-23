@@ -55,7 +55,13 @@
 						</div>
 					</li>
 				</ul>
-				<a href="entrar.php" class="btn btn-primary my-0 mx-2">Entrar</a>
-				<a href="form_client.php" class="btn btn-outline-primary my-0">Nou client</a>
+				<?php 
+					if (isset($_SESSION["user"])) {
+						echo '<p class="my-0" style="color: white; font-size: 1.5em;">'.$_SESSION["nom"].'</p>';
+					} else {
+						echo '<a href="entrar.php" class="btn btn-primary my-0 mx-2">Entrar</a>';
+						echo '<a href="form_client.php" class="btn btn-outline-primary my-0">Nou client</a>';
+					}
+				?>
 			</div>
 		</nav>

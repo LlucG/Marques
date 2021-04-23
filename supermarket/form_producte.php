@@ -1,5 +1,14 @@
 <?php
+	session_start();
 	require "header.php";
+	include 'config.php';
+	if ($conn->connect_error) {
+			echo "Hi ha hagut un error";
+	} else {
+		$sql = "SELECT * FROM categories";
+
+		$result = $conn->query($sql);
+	}
 ?>
 		<div class="container m-5 mx-auto text-white">
 			<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> method="post" enctype="multipart/form-data">
@@ -18,6 +27,9 @@
 							<select class="form-control" name="categoria" id="categoria">
 								<option value="">Selecciona una opció</option>
 								<option value="1">Arròs</option>
+								<?php
+
+								?>
 							</select>
 						</div>
 						<div class="form-group">
