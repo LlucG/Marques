@@ -1,5 +1,19 @@
 <?php
 	require "header.php";
+	include 'config.php';
+	if ($conn->connect_error) {
+			echo "Hi ha hagut un error";
+	} else {
+		$sql = "SELECT * FROM productes";
+
+		if (isset($_GET["cat"])) {
+			$cat = $_GET["cat"];
+
+			$sql = "SELECT * FROM productes WHERE categoria = ".$cat;
+		}
+
+		$result = $conn->query($sql);
+	}
 ?>
 		<div class="container m-5 mx-auto">
 			<div class="row">
@@ -21,7 +35,19 @@
 					</div>
 				</div>
 				<div class="col-8">
-					<h3 class="text-white">Els nostres productes</h3>
+					<h3 class="text-white">
+						<?php 
+						if (isset($_GET["cat"])) {
+							$sql2 = "SELECT nom FROM categories WHERE id_categoria = ".$cat;
+							$result2 = $conn->query($sql2);
+							$mostrarcat = $result2->fetch_assoc();
+							echo $mostrarcat["nom"];
+							// print_r($result2);
+						} else {
+							echo "Els nostres productes";
+						}
+						?>
+					</h3>
 					<table class="table">        
 						<tr> 
 							<th>Producte</th> 
@@ -29,142 +55,51 @@
 							<th class="text-right">Preu</th>
 							<th></th>
 						</tr>
-						<tr> 
-							<td class="align-middle">
-								<img src="images/productes/no-image.png" class="img-thumbnail mr-2" style="height: 50px;" />
-								Arroz Golden Sun 1 kg
-							</td>
-							<td class="align-middle">Arròs</td>
-							<td class="align-middle text-right">0.75 €</td>
-							<td class="align-middle">
-								<form class="form-inline" action="carrito.php" method="post">
-									<div class="form-group">
-										<input type="hidden" name="codi" value="ARR00001" />
-										<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
-								</form>
-							</td> 
-						</tr>
-						<tr> 
-							<td class="align-middle">
-								<img src="images/productes/no-image.png" class="img-thumbnail mr-2" style="height: 50px;" />
-								Arroz Golden Sun 1 kg
-							</td>
-							<td class="align-middle">Arròs</td>
-							<td class="align-middle text-right">0.75 €</td>
-							<td class="align-middle">
-								<form class="form-inline" action="carrito.php" method="post">
-									<div class="form-group">
-										<input type="hidden" name="codi" value="ARR00001" />
-										<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
-								</form>
-							</td> 
-						</tr>
-						<tr> 
-							<td class="align-middle">
-								<img src="images/productes/no-image.png" class="img-thumbnail mr-2" style="height: 50px;" />
-								Arroz Golden Sun 1 kg
-							</td>
-							<td class="align-middle">Arròs</td>
-							<td class="align-middle text-right">0.75 €</td>
-							<td class="align-middle">
-								<form class="form-inline" action="carrito.php" method="post">
-									<div class="form-group">
-										<input type="hidden" name="codi" value="ARR00001" />
-										<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
-								</form>
-							</td> 
-						</tr>
-						<tr> 
-							<td class="align-middle">
-								<img src="images/productes/no-image.png" class="img-thumbnail mr-2" style="height: 50px;" />
-								Arroz Golden Sun 1 kg
-							</td>
-							<td class="align-middle">Arròs</td>
-							<td class="align-middle text-right">0.75 €</td>
-							<td class="align-middle">
-								<form class="form-inline" action="carrito.php" method="post">
-									<div class="form-group">
-										<input type="hidden" name="codi" value="ARR00001" />
-										<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
-								</form>
-							</td> 
-						</tr>
-						<tr> 
-							<td class="align-middle">
-								<img src="images/productes/no-image.png" class="img-thumbnail mr-2" style="height: 50px;" />
-								Arroz Golden Sun 1 kg
-							</td>
-							<td class="align-middle">Arròs</td>
-							<td class="align-middle text-right">0.75 €</td>
-							<td class="align-middle">
-								<form class="form-inline" action="carrito.php" method="post">
-									<div class="form-group">
-										<input type="hidden" name="codi" value="ARR00001" />
-										<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
-								</form>
-							</td> 
-						</tr>
-						<tr> 
-							<td class="align-middle">
-								<img src="images/productes/no-image.png" class="img-thumbnail mr-2" style="height: 50px;" />
-								Arroz Golden Sun 1 kg
-							</td>
-							<td class="align-middle">Arròs</td>
-							<td class="align-middle text-right">0.75 €</td>
-							<td class="align-middle">
-								<form class="form-inline" action="carrito.php" method="post">
-									<div class="form-group">
-										<input type="hidden" name="codi" value="ARR00001" />
-										<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
-								</form>
-							</td> 
-						</tr>
-						<tr> 
-							<td class="align-middle">
-								<img src="images/productes/no-image.png" class="img-thumbnail mr-2" style="height: 50px;" />
-								Arroz Golden Sun 1 kg
-							</td>
-							<td class="align-middle">Arròs</td>
-							<td class="align-middle text-right">0.75 €</td>
-							<td class="align-middle">
-								<form class="form-inline" action="carrito.php" method="post">
-									<div class="form-group">
-										<input type="hidden" name="codi" value="ARR00001" />
-										<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
-								</form>
-							</td> 
-						</tr>
-						<tr> 
-							<td class="align-middle">
-								<img src="images/productes/no-image.png" class="img-thumbnail mr-2" style="height: 50px;" />
-								Arroz Golden Sun 1 kg
-							</td>
-							<td class="align-middle">Arròs</td>
-							<td class="align-middle text-right">0.75 €</td>
-							<td class="align-middle">
-								<form class="form-inline" action="carrito.php" method="post">
-									<div class="form-group">
-										<input type="hidden" name="codi" value="ARR00001" />
-										<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>
-								</form>
-							</td> 
-						</tr>
+						<?php 
+							if ($result) {
+								if ($result->num_rows > 0) {
+									$row = $result->fetch_assoc();
+									while($row) {
+										$codi = $row["codi"];
+										$categoria = (int)$row["categoria"];
+										$sql2 = "SELECT nom FROM categories WHERE id_categoria = ".$categoria;
+										$result2 = $conn->query($sql2);
+										$mostrarcat = $result2->fetch_assoc();
+										// print_r($result2);
+
+										$nom = $row["nom"];
+										$preu = $row["preu"];
+										$unitats_stock = $row["unitats_stock"];
+										$image = $row["imatge"];
+
+										echo "<tr>";
+											echo '<td class="align-middle">';
+												echo '<img src="'.$image.'" class="img-thumbnail mr-2" style="height: 50px;" />'.$nom;
+											echo '</td>';
+											echo '<td class="align-middle">'.$mostrarcat["nom"].'</td>';
+											echo '<td class="align-middle text-right">'.$preu.'</td>';
+											echo '<td class="align-middle">';
+												echo '<form class="form-inline" action="carrito.php" method="post">';
+													echo '<div class="form-group">';
+														echo '<input type="hidden" name="codi" value="'.$codi.'" />';
+														echo '<input type="number" class="form-control form-control-sm mr-2" name="quantitat" min="1" value="1" style="width: 50px;" />';
+														echo '<button type="submit" class="btn btn-primary"><i class="fas fa-cart-plus"></i></button>';
+													echo '</div>';
+												echo '</form>';
+											echo '</td>';
+										echo '</tr>';
+
+										$row = $result->fetch_assoc();
+									}
+									echo "</table>";
+								} else {
+									echo "<p>No hay ningún/a usuario/a</p>";
+								}
+							} else {
+								echo "ERROR al seleccionar los datos";
+							}
+							$conn->close();
+						?>
 					</table>
 				</div>
 			</div>
