@@ -5,7 +5,7 @@
 	if ($conn->connect_error) {
 			echo "Hi ha hagut un error";
 	} else {
-		$sql = "SELECT * FROM categories";
+		$sql = "SELECT * FROM categories ORDER BY nom";
 
 		$result = $conn->query($sql);
 	}
@@ -26,9 +26,20 @@
 							<label for="categoria">Categoria:</label>
 							<select class="form-control" name="categoria" id="categoria">
 								<option value="">Selecciona una opció</option>
-								<option value="1">Arròs</option>
 								<?php
+									if ($result->num_rows > 0) {
+										$row = $result->fetch_assoc();
+										while($row) {
+											$id_categoria = $row["id_categoria"];
+											$nom = $row["nom"];
 
+											echo '<option value="'.$id_categoria.'">'.$nom.'</option>';
+											$row = $result->fetch_assoc();
+										}
+									} else {
+										alert("Error al seleccionar les dades");
+									}
+									$conn->close();
 								?>
 							</select>
 						</div>
