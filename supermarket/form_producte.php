@@ -20,8 +20,8 @@
 					$extensio = pathinfo($_FILES['imatge']['name'], PATHINFO_EXTENSION);
 
 					if ($extensio == 'PNG' || $extensio == 'png' || $extensio == 'JPG' || $extensio == 'jpg') {
-						move_uploaded_file($_FILES['imatge']['tmp_name'], "images/productes". $codi . "." .$extensio);
-						$imatge = "images/productes". $codi . "." .$extensio;
+						move_uploaded_file($_FILES['imatge']['tmp_name'], "images/productes/". $codi . "." .$extensio);
+						$imatge = "images/productes/". $codi . "." .$extensio;
 						$correcte++;
 					}
 				}
