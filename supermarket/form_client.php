@@ -123,7 +123,7 @@
 					$correcte = true;
 						// print_r($sql);
 					}
-					print_r($sql);
+					// print_r($sql);
 					$conn->query($sql);	
 				}
 				$conn->close();
